@@ -12,7 +12,15 @@ export class UserComponent implements OnInit {
   constructor(private userService:UserService){ }
 
   ngOnInit(): void {
-    alert("hi")
+  
+    this.userService.getLoggedUser().subscribe(
+      (res)=>{
+        console.log(res)
+      },
+      (err)=>{
+        alert("veuillez connecter!!!")
+      }
+    )
     this.userService.getAllUsers().subscribe(
       (res)=>{
         this.allUser=res;
@@ -23,5 +31,4 @@ export class UserComponent implements OnInit {
       }
     )
   }
-
 }

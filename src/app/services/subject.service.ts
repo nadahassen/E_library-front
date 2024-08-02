@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SubjectService {
-  private baseUrl = 'http://localhost:9100/subject'; // Adjust the port and path as necessary
+  private baseUrl = 'http://localhost:9100/library/subject'; // Adjust the port and path as necessary
 
   constructor(private http: HttpClient) { }
 

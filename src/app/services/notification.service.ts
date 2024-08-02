@@ -7,7 +7,7 @@ import { Notification } from 'app/models/notification.model'; // Adjust the path
   providedIn: 'root'
 })
 export class NotificationService {
-  private baseUrl = 'http://localhost:9100/notifications';
+  private baseUrl = 'http://localhost:9100/library/notifications';
   constructor(private http: HttpClient) { }
 
   retrieveAllNotifications(): Observable<Notification[]> {

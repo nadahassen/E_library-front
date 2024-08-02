@@ -1,1 +1,89 @@
-<p>ressource works!</p>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--
+<div style="width: 80%; margin: auto; height: 400px; overflow-y: auto;">
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Specialty</th>
+            <th>Status</th>
+            <th>Uploaded By</th>
+            <th>Approved By</th>
+            <th>Subject</th>
+            <th>Images</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let resource of resources">
+            <td>{{ resource.id_resource }}</td>
+            <td>{{ resource.title }}</td>
+            <td>{{ resource.specialty }}</td>
+            <td>{{ resource.status }}</td>
+            <td>{{ resource.upload.name }}</td>
+            <td>{{ resource.approve.name }}</td>
+            <td>{{ resource.subject.name }}</td>
+            <td>
+                <ul>
+                    <li *ngFor="let image of resource.resourceImages">
+                        <img [src]="image.url" alt="Resource Image">
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+-->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title   ">Ressources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Specialty</th>
+                                <th>Status</th>
+                                <th>Uploaded By</th>
+                                <th>Approved By</th>
+                                <th>Subject</th>
+                                <th>Images</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let resource of resources">
+                                    <td>{{ resource.id_resource }}</td>
+                                    <td>{{ resource.title }}</td>
+                                    <td>{{ resource.specialty }}</td>
+                                    <td>{{ resource.status }}</td>
+                                    <td>{{ resource.upload.name }}</td>
+                                    <td>{{ resource.approve.name }}</td>
+                                    <td>{{ resource.subject.name }}</td>
+                                    <td>
+                                        <ul>
+                                            <li *ngFor="let image of resource.resourceImages">
+                                                <img [src]="image.url" alt="Resource Image">
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>      
+                </div>

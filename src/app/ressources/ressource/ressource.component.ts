@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Resource } from 'app/models/resource.model';
+import { ResourceService } from 'app/services/resource.service';
 
 @Component({
   selector: 'app-ressource',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ressource.component.css']
 })
 export class RessourceComponent implements OnInit {
-
-  constructor() { }
+resources : Resource[] = [];
+  constructor(private resourceservice : ResourceService) { }
 
   ngOnInit(): void {
+    this.loadRessource();
   }
 
 loadRessource(){
@@ -22,14 +25,4 @@ loadRessource(){
 
 
 
-  loadResources(): void {
-    this.resourceService.getAllResources().subscribe(
-      (data: Resource[]) => {
-        this.resources = data;
-      },
-      error => {
-        console.error('Error fetching resources:', error);
-      }
-    );
-  }
 }

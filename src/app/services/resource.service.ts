@@ -1,47 +1,37 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Resource } from 'app/models/resource.model';
 import { Observable } from 'rxjs';
-import { Resource } from 'app/models/resource.model'; // Adjust the import path as needed
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResourceService {
-  private apiUrl = 'http://localhost:9100/library/resource';
+  private baseUrl = 'http://localhost:9100/library/resource';
 
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
-
-  // Create a new resource with images
-  createResource(resource: Resource, imageFiles: File[], userId: number): Observable<Resource> {
+createResource(resource: Resource, imageFiles: File[], userId: number, idSubject: number): Observable<any> {
     const formData = new FormData();
     formData.append('resource', JSON.stringify(resource));
-    formData.append('userId', userId.toString());
+    imageFiles.forEach(file => formData.append('imageFile', file));
+    const params = new HttpParams().set('userId', userId.toString());
 
-    imageFiles.forEach((file, index) => {
-      formData.append('imageFile', file, file.name);
-    });
-
-    return this.http.post<Resource>(`${this.apiUrl}/add`, formData);
+    return this.http.post(`${this.baseUrl}/add/${idSubject}`, formData, { params });
+  }
+  retrieveAllResources(): Observable<Resource[]> {
+    return this.http.get<Resource[]>(`${this.baseUrl}/getall`);
+  }
+  retrieveResource(idResource: number): Observable<Resource> {
+    return this.http.get<Resource>(`${this.baseUrl}/getresource/${idResource}`);
+  }
+  modifyResource(resource: Resource): Observable<Resource> {
+    return this.http.put<Resource>(`${this.baseUrl}/modify`, resource);
   }
 
-  // Retrieve all resources
-  getAllResources(): Observable<Resource[]> {
-    return this.http.get<Resource[]>(`${this.apiUrl}/getall`);
+  removeResource(idResource: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/delete/${idResource}`);
   }
 
-  // Get a resource by ID
-  getResourceById(id: number): Observable<Resource> {
-    return this.http.get<Resource>(`${this.apiUrl}/getresource/${id}`);
-  }
 
-  // Update an existing resource
-  updateResource(resource: Resource): Observable<Resource> {
-    return this.http.put<Resource>(`${this.apiUrl}/modify`, resource);
-  }
-
-  // Delete a resource by ID
-  deleteResource(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
-  }
 }

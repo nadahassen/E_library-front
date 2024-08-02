@@ -1,1 +1,23 @@
-<p>ressource works!</p>
+<table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Specialty</th>
+        <th>Status</th>
+        <th>Uploaded by</th>
+        <th>Approved by</th>
+        <th>Subject</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resource of resources">
+        <td>{{ resource.title }}</td>
+        <td>{{ resource.specialty }}</td>
+        <td>{{ resource.status }}</td>
+        <td>{{ resource.upload?.firstname }} {{ resource.upload?.lastname }}</td>
+        <td>{{ resource.approve?.firstname }} {{ resource.approve?.lastname }}</td>
+        <td>{{ resource.subject?.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

@@ -13,6 +13,7 @@ import { SubjectComponent } from './subjects/subject/subject.component';
 import { UserComponent } from './users/user/user.component';
 import { RessourceComponent } from './ressources/ressource/ressource.component';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,

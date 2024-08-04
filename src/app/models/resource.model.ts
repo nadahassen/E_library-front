@@ -5,7 +5,7 @@ export class Resource{
     
     id_resource: number;
     title: string;
-    specialty: string;
+  //  specialty: string;
     status: string;
     upload: User;
     approve: User;

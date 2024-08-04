@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class ResourceService {
   private baseUrl = 'http://localhost:9100/library/resource';
+  private baseUrlImage = 'http://localhost:9100/library/images';
+
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +33,10 @@ createResource(resource: Resource, imageFiles: File[], userId: number, idSubject
 
   removeResource(idResource: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/delete/${idResource}`);
+  }
+
+  getImage(imageId: number): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}/${imageId}`, { responseType: 'blob' });
   }
 
 

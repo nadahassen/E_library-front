@@ -1,4 +1,4 @@
 export class User{
-    idUser:Number;
+    id_user:Number;
     password:String;
 }

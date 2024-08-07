@@ -84,7 +84,7 @@
                     <!-- Conditional buttons based on the resource status -->
                     <button *ngIf="resource.status === 'PENDING'" class="btn btn-success" (click)="approveResource(resource.id_resource)">Approve</button>
                     <button *ngIf="resource.status === 'PENDING'" class="btn btn-danger" (click)="declineResource(resource.id_resource)">Decline</button>
-                    <button *ngIf="resource.status === 'APPROVED'" class="btn btn-danger" (click)="deleteResource(resource.id_resource)">Delete</button>
+                    <button *ngIf="resource.status === 'APPROVED'" class="btn btn-danger" (click)="declineResource(resource.id_resource)">Delete</button>
                   </td>
                 </tr>
               </tbody>

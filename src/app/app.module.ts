@@ -12,7 +12,9 @@ import { ReservationComponent } from './reservations/reservation/reservation.com
 import { SubjectComponent } from './subjects/subject/subject.component';
 import { UserComponent } from './users/user/user.component';
 import { RessourceComponent } from './ressources/ressource/ressource.component';
+
 import { AddResourceComponent } from './ressources/addresource/addresource.component';
+
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { AddResourceComponent } from './ressources/addresource/addresource.compo
     SubjectComponent,
     UserComponent,
     RessourceComponent,
+
     AddResourceComponent,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

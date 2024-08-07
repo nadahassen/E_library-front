@@ -13,7 +13,9 @@ import { RessourceComponent } from 'app/ressources/ressource/ressource.component
 import { ReservationComponent } from 'app/reservations/reservation/reservation.component';
 import { UserComponent } from 'app/users/user/user.component';
 import { SubjectComponent } from 'app/subjects/subject/subject.component';
+
 import { AddResourceComponent } from 'app/ressources/addresource/addresource.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -72,4 +74,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user',        component: UserComponent },
     { path: 'subject',        component: SubjectComponent },
     { path: 'addresource',        component: AddResourceComponent },
+
 ];

@@ -97,16 +97,6 @@ export class RessourceComponent implements OnInit {
   getSafeUrl(imageId: number): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(`http://localhost:9100/library/images/${imageId}`);
   }
-
-  viewResource(image: ImageModel) {
-    this.currentImage = image;
-    this.isModalOpen = true;
-  }
-
-  closeModal() {
-    this.isModalOpen = false;
-    this.currentImage = undefined;
-  }
   
 
   approveResource(resourceId: number): void {
@@ -145,7 +135,6 @@ export class RessourceComponent implements OnInit {
   
   
 
-=======
   viewResource(resource: Resource): void {
     if (resource.resourceImages.length > 0) {
       this.currentImage = resource.resourceImages[0]; // Display the first image as a default
@@ -157,3 +146,4 @@ export class RessourceComponent implements OnInit {
     this.isModalOpen = false;
   }
 
+}

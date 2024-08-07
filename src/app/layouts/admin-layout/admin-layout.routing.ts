@@ -15,6 +15,9 @@ import { UserComponent } from 'app/users/user/user.component';
 import { SubjectComponent } from 'app/subjects/subject/subject.component';
 import { LoginComponent } from 'app/authentification/login/login.component';
 
+import { AddResourceComponent } from 'app/ressources/addresource/addresource.component';
+
+
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -72,4 +75,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user',        component: UserComponent },
     { path: 'subject',        component: SubjectComponent },
     { path: 'login',        component: LoginComponent },
+    { path: 'addresource',        component: AddResourceComponent }
+
+
 ];

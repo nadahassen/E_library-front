@@ -14,6 +14,10 @@ import { UserComponent } from './users/user/user.component';
 import { RessourceComponent } from './ressources/ressource/ressource.component';
 import { LoginComponent } from './authentification/login/login.component';
 
+import { AddResourceComponent } from './ressources/addresource/addresource.component';
+
+
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -33,6 +37,8 @@ import { LoginComponent } from './authentification/login/login.component';
     UserComponent,
     RessourceComponent,
     LoginComponent,
+
+    AddResourceComponent,
 
   ],
   providers: [],

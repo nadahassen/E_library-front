@@ -13,6 +13,9 @@ import { SubjectComponent } from './subjects/subject/subject.component';
 import { UserComponent } from './users/user/user.component';
 import { RessourceComponent } from './ressources/ressource/ressource.component';
 
+import { AddResourceComponent } from './ressources/addresource/addresource.component';
+
+
 
 @NgModule({
   imports: [
@@ -32,6 +35,8 @@ import { RessourceComponent } from './ressources/ressource/ressource.component';
     SubjectComponent,
     UserComponent,
     RessourceComponent,
+
+    AddResourceComponent,
 
   ],
   providers: [],

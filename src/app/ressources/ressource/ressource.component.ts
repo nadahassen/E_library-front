@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +7,7 @@ import { Resource } from 'app/models/resource.model';
 import { User } from 'app/models/user.model';
 import { ResourceService } from 'app/services/resource.service';
 import { UserService } from 'app/services/user.service';
+
 
 @Component({
   selector: 'app-ressource',
@@ -26,6 +28,7 @@ export class RessourceComponent implements OnInit {
 
   filters = {
     grade: '',
+
     specialty: '',
     status: '',
     subject: ''
@@ -36,6 +39,7 @@ export class RessourceComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private httpClient: HttpClient,
     private userService: UserService // Inject the UserService
+
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +53,7 @@ export class RessourceComponent implements OnInit {
     }, error => {
       console.error('Error fetching user', error);
     });
+
   }
 
   loadResources() {
@@ -57,6 +62,7 @@ export class RessourceComponent implements OnInit {
       this.filteredResources = data;
       this.populateFilters();
       this.applyFilters();
+
     });
   }
 
@@ -78,6 +84,7 @@ export class RessourceComponent implements OnInit {
     this.filteredResources = this.resources.filter(resource => {
       return (!this.filters.grade || resource.subject.grade === grade) &&
              (!this.filters.specialty || resource.subject.spec === this.filters.specialty) &&
+
              (!this.filters.status || resource.status === this.filters.status) &&
              (!this.filters.subject || resource.subject.name === this.filters.subject);
     });
@@ -138,4 +145,15 @@ export class RessourceComponent implements OnInit {
   
   
 
-}
+=======
+  viewResource(resource: Resource): void {
+    if (resource.resourceImages.length > 0) {
+      this.currentImage = resource.resourceImages[0]; // Display the first image as a default
+      this.isModalOpen = true;
+    }
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
+

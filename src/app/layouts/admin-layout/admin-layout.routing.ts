@@ -14,6 +14,9 @@ import { ReservationComponent } from 'app/reservations/reservation/reservation.c
 import { UserComponent } from 'app/users/user/user.component';
 import { SubjectComponent } from 'app/subjects/subject/subject.component';
 
+import { AddResourceComponent } from 'app/ressources/addresource/addresource.component';
+
+
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -70,4 +73,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'reservation',        component: ReservationComponent },
     { path: 'user',        component: UserComponent },
     { path: 'subject',        component: SubjectComponent },
+    { path: 'addresource',        component: AddResourceComponent },
+
 ];

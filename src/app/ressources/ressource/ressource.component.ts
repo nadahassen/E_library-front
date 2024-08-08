@@ -22,20 +22,21 @@ export class RessourceComponent implements OnInit {
   grades: number[] = [];
   isModalOpen: boolean = false;
   currentImage?: ImageModel;
-  staticUser: User; // This will be set after fetching from the database
+  staticUser: User;
 
   filters = {
-    grade: '',
-    specialty: '',
-    status: '',
-    subject: ''
+    grade: [] as number[],       // Changed to array
+    specialty: [] as string[],   // Changed to array
+    status: [] as string[],      // Changed to array
+    subject: [] as string[],     // Changed to array
+    title: '' as string
   };
 
   constructor(
     private resourceService: ResourceService,
     private sanitizer: DomSanitizer,
     private httpClient: HttpClient,
-    private userService: UserService // Inject the UserService
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -68,19 +69,62 @@ export class RessourceComponent implements OnInit {
   }
 
   applyFilters() {
-    const grade = parseInt(this.filters.grade, 10);
-    if (grade === 1 || grade === 2 || grade === 3) {
+    const searchText = this.filters.title?.toLowerCase() || '';
+    
+    // If grades 1, 2, or 3, filter specialties to only include 'TRUNC'
+    if (this.filters.grade.length > 0 && [1, 2, 3].some(g => this.filters.grade.includes(g))) {
       this.filteredSpecialties = ['TRUNC'];
     } else {
       this.filteredSpecialties = this.specialties;
     }
 
     this.filteredResources = this.resources.filter(resource => {
-      return (!this.filters.grade || resource.subject.grade === grade) &&
-             (!this.filters.specialty || resource.subject.spec === this.filters.specialty) &&
-             (!this.filters.status || resource.status === this.filters.status) &&
-             (!this.filters.subject || resource.subject.name === this.filters.subject);
+      return (this.filters.grade.length === 0 || this.filters.grade.includes(resource.subject.grade)) &&
+             (this.filters.specialty.length === 0 || this.filters.specialty.includes(resource.subject.spec)) &&
+             (this.filters.status.length === 0 || this.filters.status.includes(resource.status)) &&
+             (this.filters.subject.length === 0 || this.filters.subject.includes(resource.subject.name)) &&
+             (searchText === '' || resource.title.toLowerCase().includes(searchText));
     });
+  }
+
+  onGradeChange(event: any) {
+    const grade = parseInt(event.target.value, 10);
+    if (event.target.checked) {
+      this.filters.grade.push(grade);
+    } else {
+      this.filters.grade = this.filters.grade.filter(g => g !== grade);
+    }
+    this.applyFilters();
+  }
+
+  onSpecialtyChange(event: any) {
+    const specialty = event.target.value;
+    if (event.target.checked) {
+      this.filters.specialty.push(specialty);
+    } else {
+      this.filters.specialty = this.filters.specialty.filter(s => s !== specialty);
+    }
+    this.applyFilters();
+  }
+
+  onStatusChange(event: any) {
+    const status = event.target.value;
+    if (event.target.checked) {
+      this.filters.status.push(status);
+    } else {
+      this.filters.status = this.filters.status.filter(s => s !== status);
+    }
+    this.applyFilters();
+  }
+
+  onSubjectChange(event: any) {
+    const subject = event.target.value;
+    if (event.target.checked) {
+      this.filters.subject.push(subject);
+    } else {
+      this.filters.subject = this.filters.subject.filter(s => s !== subject);
+    }
+    this.applyFilters();
   }
 
   getImageUrl(imageId: number): string {
@@ -92,6 +136,7 @@ export class RessourceComponent implements OnInit {
   }
 
   viewResource(image: ImageModel) {
+    console.log('Selected Resource:', this.resources); // Add this line
     this.currentImage = image;
     this.isModalOpen = true;
   }
@@ -100,13 +145,12 @@ export class RessourceComponent implements OnInit {
     this.isModalOpen = false;
     this.currentImage = undefined;
   }
-  
 
   approveResource(resourceId: number): void {
     const resource = this.resources.find(r => r.id_resource === resourceId);
     if (resource) {
       resource.status = 'APPROVED';
-      resource.approve = this.staticUser; // Set the static user
+      resource.approve = this.staticUser;
       this.resourceService.modifyResource(resource).subscribe(
         () => {
           this.applyFilters();
@@ -118,7 +162,7 @@ export class RessourceComponent implements OnInit {
       );
     }
   }
-  
+
   declineResource(resourceId: number): void {
     const resource = this.resources.find(r => r.id_resource === resourceId);
     if (resource) {
@@ -135,7 +179,14 @@ export class RessourceComponent implements OnInit {
     }
   }
 
-  
-  
+   downloadFile(url: string, filename: string): void {
+    this.httpClient.get(url, { responseType: 'blob' }).subscribe(blob => {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+    });
+  }
 
+  
 }

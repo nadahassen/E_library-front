@@ -13,6 +13,8 @@ import { RessourceComponent } from 'app/ressources/ressource/ressource.component
 import { ReservationComponent } from 'app/reservations/reservation/reservation.component';
 import { UserComponent } from 'app/users/user/user.component';
 import { SubjectComponent } from 'app/subjects/subject/subject.component';
+import { LoginComponent } from 'app/authentification/login/login.component';
+import { HomeComponent } from 'app/home/home.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {

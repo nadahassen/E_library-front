@@ -33,6 +33,7 @@ import { ResourceuserComponent } from './ressources/resourceuser/resourceuser.co
 import { NotfoundComponent } from './notfound/notfound.component';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,

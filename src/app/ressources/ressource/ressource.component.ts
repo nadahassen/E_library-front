@@ -68,6 +68,7 @@ export class RessourceComponent implements OnInit {
     this.specialties = [...new Set(this.resources.map(resource => resource.subject.spec))];
   }
 
+
   applyFilters() {
     const searchText = this.filters.title?.toLowerCase() || '';
     

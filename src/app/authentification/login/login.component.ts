@@ -31,7 +31,7 @@ export class LoginComponent  {
               localStorage.setItem('userId', token.userId);
               localStorage.setItem('role', token.role); 
               this.userService.setRole(token.role); 
-              if (token.role === 'Student') {
+              if (token.role === 'STUDENT') {
                 this.router.navigate(['/etudiant/home']);
               } else {
                 this.router.navigate(['/dashboard']);

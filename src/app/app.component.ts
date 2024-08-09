@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
       const role = localStorage.getItem('role');
 
-      if (role === 'Student') {
+      if (role === 'STUDENT') {
         this.router.navigate(['/etudiant/home']);
       } else {
         this.router.navigate(['/dashboard']);
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
   }
   isEtudiant():boolean{
     const role = localStorage.getItem('role');
-    return role === 'Student';
+    return role === 'STUDENT';
   }
 }
 

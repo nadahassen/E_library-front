@@ -6,6 +6,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component'; 
 import { LoginComponent } from './authentification/login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RessourceComponent } from './ressources/ressource/ressource.component';
 
 const routes: Routes = [
   {

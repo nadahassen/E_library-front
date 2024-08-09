@@ -56,6 +56,7 @@ export class UserService {
   }
   getLoggedUser():Observable<User>{
     let id=localStorage.getItem("userId");
+    console.log(id);
     const u=this.getUserById(Number(id));
     return u
   }

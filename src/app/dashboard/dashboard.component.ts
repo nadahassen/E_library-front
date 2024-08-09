@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
       const role=localStorage.getItem('role');
-      if (role==="Student"){
+      if (role==="STUDENT"){
         this.router.navigate(['/notfound'])
       }
       const dataDailySalesChart: any = {

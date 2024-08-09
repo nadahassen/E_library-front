@@ -1,14 +1,25 @@
-<a href="https://front.codes/" class="logo" target="_blank">
-  <img src="/assets/img/Logo_ESPRIT_Ariana.jpg" />
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="usernav.component.css">
+  <title>Your Angular App</title>
+</head>
+  <!-- Logo Section -->
+    <img src="/assets/img/Logo_ESPRIT_Ariana-removebg-preview.png" alt="ESPRIT Logo" class="logo"/>
 
-<input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" />
-<label for="menu-icon"></label>
-<nav class="nav">
-  <ul class="pt-5">
-    <li><a (click)="navigate('home')">Home</a></li>
-    <li><a (click)="navigate('ressource')">Ressources</a></li>
-    <li><a (click)="navigate('books')">PFE Books</a></li>
-    <li><a (click)="navigate('profile')">Profile</a></li>
-  </ul>
-</nav>
+  <!-- Menu Icon -->
+  <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" />
+  <label for="menu-icon"></label>
+
+  <!-- Navigation Menu -->
+  <nav class="nav">
+    <ul class="pt-5">
+      <li><a (click)="navigate('home')">Home</a></li>
+      <li><a (click)="navigate('ressource')">Resources</a></li>
+      <li><a (click)="navigate('books')">PFE Books</a></li>
+      <li><a (click)="navigate('profile')">Profile</a></li>
+    </ul>
+  </nav>
+</html>

@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'app/models/user.model';
-import { Observable , catchError, map, of} from 'rxjs';
+import { BehaviorSubject, Observable , catchError, map, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private apiUrl = 'http://localhost:9100/library/user';
+  private roleSubject = new BehaviorSubject<string | null>(this.getRole());
+  role$ = this.roleSubject.asObservable(); // Observable for other components
   constructor(private http: HttpClient) {}
   createUser(user: User): Observable<User> {
     return this.http.post<User>(this.apiUrl+"/add", user);
@@ -52,11 +54,33 @@ export class UserService {
     const decoded = JSON.parse(atob(parts[1]));
     return decoded;
   }
-  logout() {
-    localStorage.removeItem('token');
-  }
   getLoggedUser():Observable<User>{
     let id=localStorage.getItem("userId");
-    return this.getUserById(Number(id));
+    const u=this.getUserById(Number(id));
+    return u
+  }
+  
+  setRole(role: string) {
+    localStorage.setItem('role', role);
+    this.roleSubject.next(role); // Notify components about the role change
+  }
+
+  getRole(): string | null {
+    return localStorage.getItem('role');
+  }
+
+  isEtudiant(): boolean {
+    return this.getRole() === 'Student';
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('userId');
+    this.roleSubject.next(null); // Notify that the user logged out
   }
 }

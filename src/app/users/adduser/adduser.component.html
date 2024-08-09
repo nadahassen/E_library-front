@@ -1,0 +1,72 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstname" required>
+      <mat-error *ngIf="userForm.get('firstname').hasError('required')">
+        First Name is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastname" required>
+      <mat-error *ngIf="userForm.get('lastname').hasError('required')">
+        Last Name is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="mail" required email>
+      <mat-error *ngIf="userForm.get('mail').hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="userForm.get('mail').hasError('email')">
+        Invalid email format
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" required type="password">
+      <mat-error *ngIf="userForm.get('password').hasError('required')">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Priority</mat-label>
+      <input matInput formControlName="priority" required type="number">
+      <mat-error *ngIf="userForm.get('priority').hasError('required')">
+        Priority is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Specialty</mat-label>
+      <input matInput formControlName="specialty" required type="number">
+      <mat-error *ngIf="userForm.get('specialty').hasError('required')">
+        Specialty is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <input matInput formControlName="type" required type="number">
+      <mat-error *ngIf="userForm.get('type').hasError('required')">
+        Type is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="image" required>
+      <mat-error *ngIf="userForm.get('image').hasError('required')">
+        Image URL is required
+      </mat-error>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Submit</button>
+    <button mat-button type="button" (click)="resetForm()">Reset</button>
+  </form>
+  

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'app/services/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent  {
   email: string = '';
   password: string = '';
 
-  constructor(private userService:UserService) {}
+  constructor(private userService:UserService,private router : Router) {}
 
   onSubmit() {
     if (this.email && this.password) {
@@ -28,6 +29,13 @@ export class LoginComponent  {
             if (token){
               localStorage.setItem('token', JSON.stringify(token));
               localStorage.setItem('userId', token.userId);
+              localStorage.setItem('role', token.role); 
+              this.userService.setRole(token.role); 
+              if (token.role === 'Student') {
+                this.router.navigate(['/etudiant/home']);
+              } else {
+                this.router.navigate(['/dashboard']);
+              }
             }
           }
         },

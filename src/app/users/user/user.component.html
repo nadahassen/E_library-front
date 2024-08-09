@@ -1,1 +1,52 @@
-<p>user works!</p>
+<br>
+<br>
+<br>
+<button mat-raised-button color="primary" (click)="addDialog()">Add</button>
+<br>
+<br>
+<div class="container">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="firstname">
+        <mat-header-cell *matHeaderCellDef class="mat-table-header" mat-sort-header>First Name</mat-header-cell>
+        <mat-cell *matCellDef="let a">{{ a.firstname}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="lastname">
+        <mat-header-cell *matHeaderCellDef class="mat-table-header" mat-sort-header>Last Name</mat-header-cell>
+        <mat-cell *matCellDef="let a">{{ a.lastname }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="mail">
+        <mat-header-cell *matHeaderCellDef class="mat-table-header" mat-sort-header>Email <Address></Address></mat-header-cell>
+        <mat-cell *matCellDef="let a">{{ a.mail }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="priority">
+        <mat-header-cell *matHeaderCellDef class="mat-table-header" mat-sort-header>Priority</mat-header-cell>
+        <mat-cell *matCellDef="let a">{{ a.priority }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="specialty">
+        <mat-header-cell *matHeaderCellDef class="mat-table-header" mat-sort-header>Specialty</mat-header-cell>
+        <mat-cell *matCellDef="let a">{{ a.specialty }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef class="mat-table-header" mat-sort-header>Type</mat-header-cell>
+        <mat-cell *matCellDef="let a">{{ a.type }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="mat-table-header" mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let a">
+          <button mat-icon-button  class="b">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button  class="b">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button  class="b">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns" class="mat-table-header"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+    </div>

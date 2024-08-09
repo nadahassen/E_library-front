@@ -45,7 +45,7 @@ export class RessourceComponent implements OnInit {
   }
 
   loadStaticUser(): void {
-    this.userService.getUserById(1).subscribe(user => {
+    this.userService.getUserById(2).subscribe(user => {
       this.staticUser = user;
     }, error => {
       console.error('Error fetching user', error);

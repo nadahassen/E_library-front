@@ -1,0 +1,61 @@
+/* book.component.css */
+
+/* Container styles */
+.book-container {
+    margin-top: 100px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+  }
+  
+  /* Table styles */
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  
+  /* Header cell styles */
+  th.mat-header-cell {
+    background-color: #3f51b5; /* Primary color */
+    color: white;
+    padding: 16px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  /* Data cell styles */
+  td.mat-cell {
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  /* Row hover effect */
+  tr.mat-row:hover {
+    background-color: #f5f5f5; /* Light grey */
+  }
+  
+  /* Spacing between columns */
+  td.mat-cell,
+  th.mat-header-cell {
+    padding: 8px 16px;
+  }
+  
+  /* Action buttons */
+  .mat-icon-button {
+    margin: 0 4px;
+  }
+  
+  /* Aligning action buttons in the center */
+  td.mat-cell:last-child {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Paginator styles */
+  .mat-paginator {
+    background-color: #f5f5f5; /* Light grey */
+    padding: 8px;
+  }
+  

@@ -1,0 +1,15 @@
+<div class="book-details-container">
+    <h2>Book Details</h2>
+    <div class="book-info">
+      <img *ngIf="data.base64Image" [src]="image" alt="Book Cover" />
+      <div class="details">
+        <p><b>Author:</b> {{ data.author }}</p>
+        <p><b>Title:</b> {{ data.name }}</p>
+        <p *ngIf="data.available"><b>Availability:</b> Available</p>
+        <p *ngIf="!data.available"><b>Availability:</b> Not Available</p>
+        <p><b>Subject:</b> {{ data.sujet }}</p>
+        <p *ngIf="data.specialty"><b>Specialty:</b> {{ data.specialty }}</p>
+        <p *ngIf="data.year"><b>Year:</b> {{ data.year }}</p>
+      </div>
+    </div>
+  </div>

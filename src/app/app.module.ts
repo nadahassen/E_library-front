@@ -31,6 +31,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { ResourceuserComponent } from './ressources/resourceuser/resourceuser.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { BookDetailsComponent } from './books/book-details/book-details.component';
+import { BookDialogComponent } from './books/book-dialog/book-dialog.component';
+import { BookUpdateDialogComponent } from './books/book-update-dialog/book-update-dialog.component';
+import { ConfirmationDialogComponent } from './books/confirmation-dialog/confirmation-dialog.component';
 
 
 
@@ -70,7 +74,11 @@ import { NotfoundComponent } from './notfound/notfound.component';
     AdduserComponent,
     UserLayoutComponent,
     ResourceuserComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    BookDetailsComponent,
+    BookDialogComponent,
+    BookUpdateDialogComponent,
+    ConfirmationDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

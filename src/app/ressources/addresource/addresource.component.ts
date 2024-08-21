@@ -21,7 +21,7 @@ export class AddResourceComponent implements OnInit {
   resource: Resource = new Resource();
   imageFiles: File[] = [];
   pdfFiles: File[] = [];
-  userId: Number = 1;
+  userId: number = 1;
   idSubject: number;
   filePreviews: { type: string, src: string, name: string }[] = [];
   isModalOpen = false;

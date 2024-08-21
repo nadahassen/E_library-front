@@ -1,0 +1,40 @@
+<div class="filter-container" style="display: flex; gap: 16px; margin-top: 100px; margin-left: 20px;">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+      
+      <mat-form-field appearance="outline" style="width: 200px;">
+        <mat-label>Book Name</mat-label>
+        <input matInput id="bookName" formControlName="bookName" type="text" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" style="width: 200px;">
+        <mat-label>Availability Date</mat-label>
+        <input matInput id="availabilityDate" formControlName="availabilityDate" type="date" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" style="width: 200px;">
+        <mat-label>Specialty</mat-label>
+        <mat-select id="speciality" formControlName="speciality">
+          <mat-option *ngFor="let speciality of specialities" [value]="speciality">
+            {{ speciality }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Search</button>
+    </form>
+  </div>
+  
+  <div class="book-grid" style="margin-top: 20px;">
+    <div *ngFor="let book of books" 
+         class="book-card mat-elevation-z3" 
+         style="padding: 16px; background-color: white; cursor: pointer;"
+         (click)="openBookDetail(book)">
+      <img *ngIf="book.base64Image" [src]="'data:image/png;base64,' + book.base64Image" alt="Book Cover" class="book-cover"/>
+      <h3>{{ book.name }}</h3>
+      <p>{{ book.specialty }}</p>
+      <p>{{ book.availabilityDate }}</p>
+    </div>
+  </div>
+  
+  
+  

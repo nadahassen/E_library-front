@@ -31,6 +31,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { ResourceuserComponent } from './ressources/resourceuser/resourceuser.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { BookDetailsComponent } from './books/book-details/book-details.component';
+import { BookDialogComponent } from './books/book-dialog/book-dialog.component';
+import { BookUpdateDialogComponent } from './books/book-update-dialog/book-update-dialog.component';
+import { ConfirmationDialogComponent } from './books/confirmation-dialog/confirmation-dialog.component';
+import { BookReservationComponent } from './reservations/book-reservation/book-reservation.component';
+import { BookDetailReservationComponent } from './reservations/book-detail-reservation/book-detail-reservation.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -56,7 +63,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     MatIconModule,
     MatProgressSpinnerModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule
   ],
   declarations: [
     AppComponent,
@@ -70,7 +78,13 @@ import { NotfoundComponent } from './notfound/notfound.component';
     AdduserComponent,
     UserLayoutComponent,
     ResourceuserComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    BookDetailsComponent,
+    BookDialogComponent,
+    BookUpdateDialogComponent,
+    ConfirmationDialogComponent,
+    BookReservationComponent,
+    BookDetailReservationComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

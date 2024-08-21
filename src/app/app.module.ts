@@ -38,7 +38,7 @@ import { ConfirmationDialogComponent } from './books/confirmation-dialog/confirm
 import { BookReservationComponent } from './reservations/book-reservation/book-reservation.component';
 import { BookDetailReservationComponent } from './reservations/book-detail-reservation/book-detail-reservation.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { AddResourceComponent } from './ressources/addresource/addresource.component';
 
 
 @NgModule({
@@ -84,7 +84,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     BookUpdateDialogComponent,
     ConfirmationDialogComponent,
     BookReservationComponent,
-    BookDetailReservationComponent
+    BookDetailReservationComponent,
+    AddResourceComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

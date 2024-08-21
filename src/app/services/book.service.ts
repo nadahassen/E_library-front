@@ -31,4 +31,8 @@ export class BookService {
   deleteBook(id_book: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/delete/${id_book}`);
   }
+
+  searchBooks(criteria: any): Observable<any> {    
+    return this.http.get<any>(`${this.baseUrl}/search`, { params: criteria });
+  }
 }

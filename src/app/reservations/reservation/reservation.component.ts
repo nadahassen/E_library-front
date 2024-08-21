@@ -161,6 +161,12 @@ export class ReservationComponent implements OnInit {
       // If priorities are equal, use another sorting criterion (e.g., reservation date)
       return new Date(reservationA.reservation_date).getTime() - new Date(reservationB.reservation_date).getTime();
     }
+    markAsDone(reservation){
+      reservation.status = Status.DONE;
+      this.reservationService.updateReservation(reservation).subscribe(()=>
+        this.loadReservations)
+
+    }
 }
 
 export interface ReservationFilter {

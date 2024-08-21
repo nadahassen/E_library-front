@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{ book.name }}</h2>
+<mat-dialog-content>
+  <img *ngIf="book.base64Image" [src]="'data:image/png;base64,' + book.base64Image" alt="Book Cover" class="book-cover"/>
+  <p><strong>Author:</strong> {{ book.author }}</p>
+  <p><strong>Specialty:</strong> {{ book.specialty }}</p>
+  <p><strong>Subject:</strong> {{ book.sujet }}</p>
+  <p><strong>Year:</strong> {{ book.year }}</p>
+  
+  <mat-form-field appearance="outline" style="width: 100%; margin-top: 20px;">
+    <mat-label>Select Reservation Date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="reservationDate" [min]="minDate"
+    (ngModelChange)="onDateChange($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="reserveForm.get('reservationDate')?.hasError('notAvailable')">
+        This book is not available on the selected date.
+      </mat-error>
+  
+  </mat-form-field>
+  
+  <mat-checkbox [(ngModel)]="oneWeekChecked">1 Week</mat-checkbox>
+  <mat-checkbox [(ngModel)]="twoWeeksChecked">2 Weeks</mat-checkbox>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onClose()">Close</button>
+  <button mat-raised-button color="primary" [disabled]="reserveForm.controls['reserveButton'].disabled" (click)="onReserve()">Reserve</button>
+</mat-dialog-actions>

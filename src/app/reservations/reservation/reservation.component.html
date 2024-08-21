@@ -14,6 +14,9 @@
         <mat-option value="APPROVED">Approved</mat-option>
         <mat-option value="DECLINED">Declined</mat-option>
         <mat-option value="PENDING">Pending</mat-option>
+        <mat-option value="LATE">Late</mat-option>
+        <mat-option value="DONE">Done</mat-option>
+
       </mat-select>
     </mat-form-field>
   </div>
@@ -83,7 +86,10 @@
           <th mat-header-cell *matHeaderCellDef> Actions </th>
           <td  mat-cell *matCellDef="let reservation">
             <button *ngIf="reservation.status == 'PENDING'" mat-button (click)="approveReservation(reservation)">Approve</button>
-            <button *ngIf="reservation.status == 'PENDING'" mat-button color="warn" (click)="declineReservation(reservation)">Decline</button>        
+            <button *ngIf="reservation.status == 'PENDING'" mat-button color="warn" (click)="declineReservation(reservation)">Decline</button> 
+            <button *ngIf="reservation.status === 'LATE' || reservation.status === 'APPROVED'" mat-button color="primary" (click)="markAsDone(reservation)">
+              Done
+            </button>       
           </td>
         </ng-container>
     

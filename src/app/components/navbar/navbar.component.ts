@@ -4,6 +4,8 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { Router } from '@angular/router';
 import { UserService } from 'app/services/user.service';
 import { User } from 'app/models/user.model';
+import { Notification } from 'app/models/notification.model';
+import { NotificationService } from 'app/services/notification.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,24 +13,32 @@ import { User } from 'app/models/user.model';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+    notifications : Notification[] = [];
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+
     u:User;
-    constructor(location: Location,  private element: ElementRef, private router: Router,private userService:UserService) {
+
+
+    constructor(location: Location,  private element: ElementRef, private router: Router,private notificationservice : NotificationService,private userService:UserService) {
+
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
+
         const id=localStorage.getItem("userId");
         this.userService.getUserById(Number(id)).subscribe(
             (res)=>{
                 this.u=res;
             }
         )
+        this.getNotifications();
+
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
@@ -41,6 +51,7 @@ export class NavbarComponent implements OnInit {
          }
      });
     }
+
     logout(){
         this.userService.logout();
         this.router.navigate(['/login'])
@@ -49,6 +60,14 @@ export class NavbarComponent implements OnInit {
         return this.userService.getPhoto(user.image);
         
       }
+    getNotifications(){
+        this.notificationservice.retrieveAllNotifications().subscribe(data => {
+            this.notifications = data;
+        });
+        }
+    
+
+
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const body = document.getElementsByTagName('body')[0];

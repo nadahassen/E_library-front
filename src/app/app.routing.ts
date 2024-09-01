@@ -10,6 +10,9 @@ import { InscriptionComponent } from './authentification/inscription/inscription
 import { SuccespageComponent } from './succespage/succespage.component';
 import { InactiveComponent } from './inactive/inactive.component';
 import { ResetpassComponent } from './authentification/resetpass/resetpass.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RessourceComponent } from './ressources/ressource/ressource.component';
+
 
 const routes: Routes = [
   {

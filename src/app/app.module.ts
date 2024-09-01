@@ -39,6 +39,14 @@ import { InactiveComponent } from './inactive/inactive.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { ResetpassComponent } from './authentification/resetpass/resetpass.component';
 import { UpdateprofileComponent } from './users/updateprofile/updateprofile.component';
+import { BookDetailsComponent } from './books/book-details/book-details.component';
+import { BookDialogComponent } from './books/book-dialog/book-dialog.component';
+import { BookUpdateDialogComponent } from './books/book-update-dialog/book-update-dialog.component';
+import { ConfirmationDialogComponent } from './books/confirmation-dialog/confirmation-dialog.component';
+import { BookReservationComponent } from './reservations/book-reservation/book-reservation.component';
+import { BookDetailReservationComponent } from './reservations/book-detail-reservation/book-detail-reservation.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AddResourceComponent } from './ressources/addresource/addresource.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -61,7 +69,8 @@ import { UpdateprofileComponent } from './users/updateprofile/updateprofile.comp
     MatIconModule,
     MatProgressSpinnerModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule
   ],
   declarations: [
     AppComponent,
@@ -84,6 +93,13 @@ import { UpdateprofileComponent } from './users/updateprofile/updateprofile.comp
     ProfileComponent,
     ResetpassComponent,
     UpdateprofileComponent,
+    BookDetailsComponent,
+    BookDialogComponent,
+    BookUpdateDialogComponent,
+    ConfirmationDialogComponent,
+    BookReservationComponent,
+    BookDetailReservationComponent,
+    AddResourceComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,7 +4,191 @@
 <br>
 <br>
 <br>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<!-- Add a section for the background and visual elements -->
+<div class="background-container">
+    <img src="/assets/img/3ds.avif" alt="Background" class="background-image">
+    <div class="overlay"></div>
+</div>
+
+
+
 <br>
-<br>
-<br>
-<p>resourceuser works!</p>
+
+
+
+
+
+<div class="center-wrapper">
+    <main class="l-card">
+        <section class="l-card__text">
+            <p>
+                Education is the most powerful weapon which you can use to change the world.
+            </p>
+        </section>
+        <section class="l-card__user">
+            <div class="l-card__userImage">
+                <img src="https://avatars.githubusercontent.com/u/1?v=4" alt="Elyes Zoghlami">
+            </div>
+            <div class="l-card__userInfo">
+                <span>Elyes Zoghlami</span>
+                <span>ESPRIT STUDENT</span>
+            </div>
+        </section>
+    </main>
+
+    <main class="l-card">
+        <section class="l-card__text">
+            <p>
+                The roots of education are bitter, but the fruit is sweet.
+            </p>
+        </section>
+        <section class="l-card__user">
+            <div class="l-card__userImage">
+                <img src="https://avatars.githubusercontent.com/u/2?v=4" alt="Haythem Ben Sassi">
+            </div>
+            <div class="l-card__userInfo">
+                <span>Haythem Ben Sassi</span>
+                <span>ESPRIT STUDENT</span>
+            </div>
+        </section>
+    </main>
+
+    <main class="l-card">
+        <section class="l-card__text">
+            <p>
+                Education is not preparation for life; education is life itself.
+            </p>
+        </section>
+        <section class="l-card__user">
+            <div class="l-card__userImage">
+                <img src="https://avatars.githubusercontent.com/u/3?v=4" alt="Aziz Ben Amar">
+            </div>
+            <div class="l-card__userInfo">
+                <span>Aziz Ben Amar</span>
+                <span>ESPRIT STUDENT</span>
+            </div>
+        </section>
+    </main>
+
+    <main class="l-card">
+        <section class="l-card__text">
+            <p>
+                The purpose of education is to replace an empty mind with an open one.
+            </p>
+        </section>
+        <section class="l-card__user">
+            <div class="l-card__userImage">
+                <img src="https://avatars.githubusercontent.com/u/4?v=4" alt="Rayen Forgot">
+            </div>
+            <div class="l-card__userInfo">
+                <span>Rayen Forgot</span>
+                <span>ESPRIT STUDENT</span>
+            </div>
+        </section>
+    </main>
+</div>
+
+
+
+<!-- Existing Modal and User View -->
+<!-- [Your existing HTML remains here] -->
+
+
+
+<!-- Modal for Viewing Resource -->
+<div class="modal" [ngClass]="{'show': isModalOpen}" (click)="closeModal()">
+    <div class="modal-content futuristic-modal" (click)="$event.stopPropagation()">
+      <span class="close" (click)="closeModal()">&times;</span>
+      
+      <!-- For Image Files -->
+      <div *ngIf="currentImage?.type.startsWith('image')">
+        <img [src]="getImageUrl(currentImage.id_image)" alt="Resource Image" class="modal-image">
+        <div class="download-container">
+          <button (click)="downloadFile(getImageUrl(currentImage.id_image), currentImage.path)" class="download-btn">
+            <i class="fas fa-download"></i> Download Image
+          </button>
+        </div>
+      </div>
+      
+      <!-- For PDF Files -->
+      <div *ngIf="currentImage?.type === 'application/pdf'">
+        <iframe [src]="getSafeUrl(currentImage.id_image)" class="modal-pdf"></iframe>
+        <div class="download-container">
+          <button (click)="downloadFile(getImageUrl(currentImage.id_image), currentImage.path)" class="download-btn">
+            <i class="fas fa-download"></i> Download PDF
+          </button>
+        </div>
+      </div>
+      
+      <!-- For ZIP Files -->
+      <div *ngIf="currentImage?.type === 'application/zip'">
+        <p>ZIP files cannot be previewed directly in the browser.</p>
+        <div class="download-container">
+          <button (click)="downloadFile(getImageUrl(currentImage.id_image), currentImage.path)" class="download-btn">
+            <i class="fas fa-download"></i> Download ZIP
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- User View -->
+    <div class="professor-container">
+      <div class="professor-card">
+        <div class="professor-card-header">
+          <h4 class="card-title">Resources</h4>
+        </div>
+        <div class="professor-card-body">
+          <div class="filter-row">
+            <label for="titleSearch">Search Title:</label>
+            <input id="titleSearch" type="text" class="professor-input" [(ngModel)]="filters.title" (input)="applyFilters()">
+          </div>
+          <div class="filters-container">
+            <div class="filter-column">
+              <label for="gradeFilter">Grade:</label>
+              <div *ngFor="let grade of grades">
+                <input type="checkbox" class="filter-checkbox" [value]="grade" (change)="onGradeChange($event)"> {{ grade }}
+              </div>
+            </div>
+            <div class="filter-column">
+              <label for="specialtyFilter">Specialty:</label>
+              <div *ngFor="let specialty of specialties">
+                <input type="checkbox" class="filter-checkbox" [value]="specialty" (change)="onSpecialtyChange($event)"> {{ specialty }}
+              </div>
+            </div>
+        
+            <div class="filter-column">
+              <label for="subjectFilter">Subject:</label>
+              <div *ngFor="let subject of subjects">
+                <input type="checkbox" class="filter-checkbox" [value]="subject" (change)="onSubjectChange($event)"> {{ subject }}
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="resource-grid">
+            <div *ngFor="let resource of filteredResources" [ngClass]="{'resource-card': true, 'pending': resource.status === 'PENDING', 'approved': resource.status === 'APPROVED'}">
+              <h5 class="resource-title">{{ resource.title }}</h5>
+              <p><strong>Grade:</strong> {{ resource.subject.grade }}</p>
+              <p><strong>Specialty:</strong> {{ resource.subject.spec }}</p>
+              <p><strong>Uploaded By:</strong> {{ resource.upload?.firstname || '-' }} {{ resource.upload?.lastname || '-' }}</p>
+              <p><strong>Subject:</strong> {{ resource.subject?.name || '-' }}</p>
+              <div class="file-preview">
+                <li *ngFor="let image of resource.resourceImages" (click)="viewResource(image)" class="file-item">
+                  <ng-container [ngSwitch]="image.type">
+                    <img *ngSwitchCase="'image/png'" [src]="getImageUrl(image.id_image)" alt="Resource Image" class="thumbnail">
+                    <img *ngSwitchCase="'image/jpeg'" [src]="getImageUrl(image.id_image)" alt="Resource Image" class="thumbnail">
+                    <i *ngSwitchCase="'application/pdf'" class="fas fa-file-pdf file-icon pdf-icon"></i>
+                    <i *ngSwitchCase="'application/zip'" class="fas fa-file-archive file-icon zip-icon"></i>
+                    <span *ngSwitchDefault>{{ image.path }}</span>
+                  </ng-container>
+                </li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

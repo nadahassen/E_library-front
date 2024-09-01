@@ -5,18 +5,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
-body{
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 1.7;
-	color: #ececee;
-	background-color: #1f2029;
-	overflow: hidden;
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #ececee;
+  background-color: #1f2029;
+  overflow: hidden;
+  background-image: url('/assets/img/Esprit.png'); /* Replace with your local image path */
   background-position: center;
-  background-repeat: repeat;
-  background-size: 4%;
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensures the background image covers the whole viewport */
   height: 100vh;
   width: 100%;
 }
@@ -298,22 +298,19 @@ h1{
   transition-delay: 1640ms;
 }
 
-
+.logo {
+  position: absolute; /* Ensures the logo is always on top */
+  top: 20px;       /* Adjust top position as needed */
+  left: 20px;      /* Adjust left position as needed */
+  display: block;
+  z-index: 100;    /* Ensures it's on top of other elements */
+  transition: all 250ms linear;
+}
 
 .logo {
-	position: absolute;
-	top: 60px;
-	left: 50px;
-	display: block;
-	z-index: 11;
-	transition: all 250ms linear;
+  height: 100px;    /* Adjust height to make the logo smaller */
+  width: auto;     /* Keeps the aspect ratio */
 }
-.logo img {
-	height: 26px;
-	width: auto;
-	display: block;
-}
-
 
 
 @media screen and (max-width: 991px) {

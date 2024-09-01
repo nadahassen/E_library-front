@@ -26,6 +26,7 @@ export class LoginComponent  {
             }else{
             const token = this.userService.decodeToken(res);
             
+
             if (token){ 
               this.userService.getUserById(token.userId).subscribe(
                 (res)=>{

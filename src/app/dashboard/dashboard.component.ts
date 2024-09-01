@@ -101,6 +101,7 @@ export class DashboardComponent implements OnInit {
       this.fetchItems();
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
       const role=localStorage.getItem('role');
+
       if (role==="STUDENT" || !role ){
         this.router.navigate(['/notfound'])
       }

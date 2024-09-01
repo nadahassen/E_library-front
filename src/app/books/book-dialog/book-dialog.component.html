@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Create New Book</h1>
+<div mat-dialog-content>
+  <form [formGroup]="bookForm">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Sujet</mat-label>
+      <input matInput formControlName="sujet">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Year</mat-label>
+      <input matInput formControlName="year">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Specialty</mat-label>
+      <input matInput formControlName="specialty">
+    </mat-form-field>
+    <div *ngIf="image" class="image-container">
+      <img *ngIf="image not null" [src]="image" alt="Book Image" class="book-image" />
+      <button *ngIf="image not null" mat-icon-button (click)="onRemoveImage()">
+        <mat-icon style="color: red;">delete</mat-icon> <!-- or any other icon you prefer -->
+      </button>
+    </div>
+    <!-- Custom file input field -->
+    <div>
+      <label for="fileInput">Image</label>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)">
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Save</button>
+</div>

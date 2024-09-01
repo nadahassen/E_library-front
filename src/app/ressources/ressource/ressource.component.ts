@@ -6,6 +6,7 @@ import { Resource } from 'app/models/resource.model';
 import { User } from 'app/models/user.model';
 import { ResourceService } from 'app/services/resource.service';
 import { UserService } from 'app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ressource',
@@ -36,20 +37,29 @@ export class RessourceComponent implements OnInit {
     private resourceService: ResourceService,
     private sanitizer: DomSanitizer,
     private httpClient: HttpClient,
-    private userService: UserService
+    private userService: UserService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
     this.loadResources();
     this.loadStaticUser();
+    const role=localStorage.getItem('role');
+    if (role==="STUDENT"){
+      this.router.navigate(['/notfound'])
+    }
   }
 
   loadStaticUser(): void {
-    this.userService.getUserById(2).subscribe(user => {
-      this.staticUser = user;
-    }, error => {
-      console.error('Error fetching user', error);
-    });
+    this.userService.getLoggedUser().subscribe(
+      (res)=>{
+        this.staticUser = res;
+        console.log(res)
+      },
+      (err)=>{
+        alert("veuillez connecter!!!")
+      }
+    )
   }
 
   loadResources() {

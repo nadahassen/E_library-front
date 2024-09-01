@@ -1,0 +1,24 @@
+<div class="reset-password-container">
+    <h2>Forgot Password</h2>
+    <form [formGroup]="resetPasswordForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="resetPasswordForm.get('email').hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="resetPasswordForm.get('email').hasError('email')">
+          Invalid email format
+        </mat-error>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="resetPasswordForm.invalid">
+        Reset Password
+      </button>
+    </form>
+  
+    <div *ngIf="message" class="message">
+      {{ message }}
+    </div>
+  </div>
+  

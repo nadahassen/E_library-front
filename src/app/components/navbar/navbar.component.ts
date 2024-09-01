@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import { UserService } from 'app/services/user.service';
+import { User } from 'app/models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -14,13 +16,19 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    u:User;
+    constructor(location: Location,  private element: ElementRef, private router: Router,private userService:UserService) {
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
+        const id=localStorage.getItem("userId");
+        this.userService.getUserById(Number(id)).subscribe(
+            (res)=>{
+                this.u=res;
+            }
+        )
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
@@ -33,7 +41,14 @@ export class NavbarComponent implements OnInit {
          }
      });
     }
-
+    logout(){
+        this.userService.logout();
+        this.router.navigate(['/login'])
+    }
+    getAdminPhotoUrl(user: User): string {
+        return this.userService.getPhoto(user.image);
+        
+      }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const body = document.getElementsByTagName('body')[0];

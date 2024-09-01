@@ -21,6 +21,7 @@ export class AdduserComponent implements OnInit {
       priority: ['', Validators.required],
       specialty: ['', Validators.required],
       type: ['', Validators.required],
+      sate : ['APPROVED'],
       image: ['', Validators.required]
     });
   }

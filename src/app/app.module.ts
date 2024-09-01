@@ -31,8 +31,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { ResourceuserComponent } from './ressources/resourceuser/resourceuser.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-
-
+import { InscriptionComponent } from './authentification/inscription/inscription.component';
+import { SuccespageComponent } from './succespage/succespage.component';
+import { UpdateuserComponent } from './users/updateuser/updateuser.component';
+import { ShowuserComponent } from './users/showuser/showuser.component';
+import { InactiveComponent } from './inactive/inactive.component';
+import { ProfileComponent } from './users/profile/profile.component';
+import { ResetpassComponent } from './authentification/resetpass/resetpass.component';
+import { UpdateprofileComponent } from './users/updateprofile/updateprofile.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -69,7 +75,15 @@ import { NotfoundComponent } from './notfound/notfound.component';
     AdduserComponent,
     UserLayoutComponent,
     ResourceuserComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    InscriptionComponent,
+    SuccespageComponent,
+    UpdateuserComponent,
+    ShowuserComponent,
+    InactiveComponent,
+    ProfileComponent,
+    ResetpassComponent,
+    UpdateprofileComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

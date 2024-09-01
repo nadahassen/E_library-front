@@ -1,48 +1,50 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<div class="login-container">
+<div class="f">
+  <div class="fo">
+  <div class="wrapper">
+    <div class="title">
+       Login Form
+    </div>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input
-          type="email"
+       <div class="field">
+          <input type="email"
           id="email"
           required
           [(ngModel)]="email"
           name="email"
           class="form-control"
-          #emailInput="ngModel"
-        />
-        <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
-          Email is required
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input
-          type="password"
+          #emailInput="ngModel"  autocomplete="off">
+          <label>Email Address</label>
+          <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+            Email is required
+          </div>
+       </div>
+       
+       <div class="field">
+          <input type="password"
           id="password"
           required
           [(ngModel)]="password"
           name="password"
           class="form-control"
-          #passwordInput="ngModel"
-        />
-        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
-          Password is required
-        </div>
-      </div>
-  
-      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
-        Login
-      </button>
+          #passwordInput="ngModel" autocomplete="off">
+          <label>Password</label>
+          <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
+            Password is required
+          </div>
+       </div>
+       
+       <div class="content">
+          <div class="pass-link">
+             <a (click)="resetPass()">Forgot password?</a>
+          </div>
+       </div>
+       <div class="field">
+          <input type="submit" value="Login" [disabled]="loginForm.invalid">
+       </div>
+       <div class="signup-link">
+          Not a member? <a (click)="inscri()">Signup now</a>
+       </div>
     </form>
   </div>
-  
+ </div>
+</div>

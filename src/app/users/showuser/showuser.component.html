@@ -1,0 +1,41 @@
+<div class="user-dialog">
+    <div class="user-container">
+      <button class="close-btn" (click)="closeDialog()">X</button>
+      <div class="user-title">User Details</div>
+      <div class="user-details">
+        <div class="detail-item">
+          <span class="label">First Name:</span>
+          <span class="value">{{ u.firstname }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Last Name:</span>
+          <span class="value">{{ u.lastname }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Email:</span>
+          <span class="value">{{ u.mail }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Phone:</span>
+          <span class="value">{{ u.phone }}</span>
+        </div>
+        <div class="detail-item" *ngIf="u.type !== 'Admin'">
+          <span class="label">Specialty:</span>
+          <span class="value">{{ u.specialty }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Gender:</span>
+          <span class="value">{{ u.sexe }}</span>
+        </div>
+        <div class="detail-item" *ngIf="u.type === 'Student'">
+          <span class="label">Priority:</span>
+          <span class="value">{{ u.priority }}</span>
+        </div>
+        <div class="detail-item" *ngIf="u.type === 'Student'">
+          <span class="label">State:</span>
+          <span class="value">{{ u.state }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  

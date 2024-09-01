@@ -6,6 +6,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component'; 
 import { LoginComponent } from './authentification/login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { InscriptionComponent } from './authentification/inscription/inscription.component';
+import { SuccespageComponent } from './succespage/succespage.component';
+import { InactiveComponent } from './inactive/inactive.component';
+import { ResetpassComponent } from './authentification/resetpass/resetpass.component';
 
 const routes: Routes = [
   {
@@ -13,7 +17,11 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full',
   },
+  {path:'reset',component:ResetpassComponent},
+  {path:'inactive',component:InactiveComponent},
+  {path:'success',component:SuccespageComponent},
   {path:'login',component:LoginComponent},
+  {path:'inscri',component:InscriptionComponent},
   {
     path: '',
     component: AdminLayoutComponent,
@@ -40,8 +48,8 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: 'notfound' }, 
   { path: 'notfound', component: NotfoundComponent}, 
+  { path: '**', redirectTo: 'notfound' }
 ];
 
 @NgModule({

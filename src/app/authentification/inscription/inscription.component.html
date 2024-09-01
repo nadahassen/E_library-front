@@ -1,0 +1,81 @@
+<div class="all">
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="user-details">
+
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input type="text" formControlName="firstname" placeholder="Enter your first name" required>
+            <div *ngIf="registrationForm.get('firstname').invalid && registrationForm.get('firstname').touched" class="error-message">
+              First Name is required
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Last Name</span>
+            <input type="text" formControlName="lastname" placeholder="Enter your last name" required>
+            <div *ngIf="registrationForm.get('lastname').invalid && registrationForm.get('lastname').touched" class="error-message">
+              Last Name is required
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" formControlName="mail" placeholder="Enter your email" required>
+            <div *ngIf="registrationForm.get('mail').invalid && registrationForm.get('mail').touched" class="error-message">
+              Invalid email (must end with &#64;esprit.tn) 
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" formControlName="phone" placeholder="Enter your phone number" required>
+            <div *ngIf="registrationForm.get('phone').invalid && registrationForm.get('phone').touched" class="error-message">
+              Phone number must be 8 digits long
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" formControlName="password" placeholder="Enter your password" required>
+            <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched" class="error-message">
+              Password is required
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Specialty</span>
+            <select formControlName="specialty" required>
+              <option value="" disabled selected>Choose your specialty</option>
+              <option value="0">SAE</option>
+              <option value="1">ARCTIC</option>
+              <option value="2">TWIN</option>
+              <option value="3">SIM</option>
+            </select>
+            <div *ngIf="registrationForm.get('specialty').invalid && registrationForm.get('specialty').touched" class="error-message">
+              Specialty is required
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Sexe</span>
+            <select formControlName="sexe" required>
+              <option value="" disabled selected>Choose your gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <div *ngIf="registrationForm.get('sexe').invalid && registrationForm.get('sexe').touched" class="error-message">
+              Gender is required
+            </div>
+          </div>
+          <input type="file" (change)="uploadFile($event)" required>
+        </div>
+        <div class="button">
+          <input type="submit" value="Register" [disabled]="registrationForm.invalid">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

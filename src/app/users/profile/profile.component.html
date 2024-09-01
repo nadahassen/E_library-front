@@ -1,0 +1,36 @@
+<div class="profile-container">
+    <div class="profile-header">
+        <img  *ngIf="user.image" [src]="getAdminPhotoUrl(user)" class="i" alt="Profil Image">
+      <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+    </div>
+    <div class="profile-details">
+      <div class="profile-info">
+        <label for="mail">Email:</label>
+        <p id="mail">{{ user.mail }}</p>
+      </div>
+      <div class="profile-info">
+        <label for="phone">Phone:</label>
+        <p id="phone">{{ user.phone }}</p>
+      </div>
+      <div class="profile-info">
+        <label for="priority">Priority:</label>
+        <p id="priority">{{ user.priority }}</p>
+      </div>
+      <div class="profile-info">
+        <label for="specialty">Specialty:</label>
+        <p id="specialty">{{ user.specialty }}</p>
+      </div>
+      <div class="profile-info">
+        <label for="state">State:</label>
+        <p id="state">{{ user.state }}</p>
+      </div>
+      <div class="profile-info">
+        <label for="sexe">Gender:</label>
+        <p id="sexe">{{ user.sexe }}</p>
+      </div>
+    </div>
+    <div>
+      <button (click)="updateProfile()">update</button>
+    </div>
+  </div>
+  

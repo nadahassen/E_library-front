@@ -8,8 +8,9 @@ import { BehaviorSubject, Observable , catchError, map, of} from 'rxjs';
 })
 export class UserService {
   private apiUrl = 'http://localhost:9100/library/user';
+  private BaseUrl = 'http://localhost:9100/library';
   private roleSubject = new BehaviorSubject<string | null>(this.getRole());
-  role$ = this.roleSubject.asObservable(); // Observable for other components
+  role$ = this.roleSubject.asObservable();
   constructor(private http: HttpClient) {}
   createUser(user: User): Observable<User> {
     return this.http.post<User>(this.apiUrl+"/add", user);
@@ -17,15 +18,19 @@ export class UserService {
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/getall`);
   }
-  getUserById(id: number): Observable<User> {
+  getUserById(id: Number): Observable<User> {
     const url = `${this.apiUrl+"/get"}/${id}`;
     return this.http.get<User>(url);
+  }
+  resetPassword(mail: String): Observable<String> {
+    const url = `${this.apiUrl+"/forgotpassword"}/${mail}`;
+    return this.http.post<String>(url,'');
   }
   updateUser(user: User): Observable<User> {
     const url = `${this.apiUrl+"/update"}`;
     return this.http.put<User>(url, user);
   }
-  deleteUser(id: number): Observable<void> {
+  deleteUser(id: Number): Observable<void> {
     const url = `${this.apiUrl+"/delete"}/${id}`;
     return this.http.delete<void>(url);
   }  
@@ -63,7 +68,7 @@ export class UserService {
   
   setRole(role: string) {
     localStorage.setItem('role', role);
-    this.roleSubject.next(role); // Notify components about the role change
+    this.roleSubject.next(role);
   }
 
   getRole(): string | null {
@@ -82,6 +87,15 @@ export class UserService {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('userId');
-    this.roleSubject.next(null); // Notify that the user logged out
+    this.roleSubject.next(null);
+  }
+  acceptUser(id:Number): Observable<User>{
+    const url = `${this.apiUrl+"/accept"}/${id}`;
+    return this.http.put<User>(url,'');
+  }
+  getPhoto(photo: String): string{
+    const photoUrl = `${this.BaseUrl}/download/${photo}`;
+
+    return `${this.BaseUrl}/download/${photo}`;
   }
 }

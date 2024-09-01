@@ -8,7 +8,8 @@
 </head>
   <!-- Logo Section -->
     <img src="/assets/img/Logo_ESPRIT_Ariana-removebg-preview.png" alt="ESPRIT Logo" class="logo"/>
-
+    <img  *ngIf="u.image" [src]="getAdminPhotoUrl(u)" class="i" alt="Profil Image">
+<li><button (click)="logout()" class="b" title="logout"><mat-icon>exit_to_app</mat-icon></button></li>
   <!-- Menu Icon -->
   <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" />
   <label for="menu-icon"></label>

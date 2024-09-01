@@ -26,16 +26,27 @@ export class LoginComponent  {
             }else{
             const token = this.userService.decodeToken(res);
             
-            if (token){
-              localStorage.setItem('token', JSON.stringify(token));
-              localStorage.setItem('userId', token.userId);
-              localStorage.setItem('role', token.role); 
-              this.userService.setRole(token.role); 
-              if (token.role === 'STUDENT') {
-                this.router.navigate(['/etudiant/home']);
-              } else {
-                this.router.navigate(['/dashboard']);
-              }
+
+            if (token){ 
+              this.userService.getUserById(token.userId).subscribe(
+                (res)=>{
+                  let u = res; 
+                  if (u.state==='PENDING'){
+                    this.router.navigate(['/inactive']);
+                  }
+                  else {
+                    localStorage.setItem('token', JSON.stringify(token));
+                    localStorage.setItem('userId', token.userId);
+                    localStorage.setItem('role', token.role); 
+                    this.userService.setRole(token.role);
+                    if (token.role === 'STUDENT') {
+                      this.router.navigate(['/etudiant/home']);
+                    } else {
+                      this.router.navigate(['/dashboard']);
+                    }
+                  }
+                }
+              )
             }
           }
         },
@@ -47,5 +58,10 @@ export class LoginComponent  {
       console.log('Form is invalid');
     }
   }
-
+  inscri(){
+    this.router.navigate(['/inscri']);
+  }
+  resetPass(){
+    this.router.navigate(['/reset']);
+  }
 }

@@ -31,6 +31,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { ResourceuserComponent } from './ressources/resourceuser/resourceuser.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { InscriptionComponent } from './authentification/inscription/inscription.component';
+import { SuccespageComponent } from './succespage/succespage.component';
+import { UpdateuserComponent } from './users/updateuser/updateuser.component';
+import { ShowuserComponent } from './users/showuser/showuser.component';
+import { InactiveComponent } from './inactive/inactive.component';
+import { ProfileComponent } from './users/profile/profile.component';
+import { ResetpassComponent } from './authentification/resetpass/resetpass.component';
+import { UpdateprofileComponent } from './users/updateprofile/updateprofile.component';
 import { BookDetailsComponent } from './books/book-details/book-details.component';
 import { BookDialogComponent } from './books/book-dialog/book-dialog.component';
 import { BookUpdateDialogComponent } from './books/book-update-dialog/book-update-dialog.component';
@@ -39,8 +47,6 @@ import { BookReservationComponent } from './reservations/book-reservation/book-r
 import { BookDetailReservationComponent } from './reservations/book-detail-reservation/book-detail-reservation.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AddResourceComponent } from './ressources/addresource/addresource.component';
-
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -79,6 +85,14 @@ import { AddResourceComponent } from './ressources/addresource/addresource.compo
     UserLayoutComponent,
     ResourceuserComponent,
     NotfoundComponent,
+    InscriptionComponent,
+    SuccespageComponent,
+    UpdateuserComponent,
+    ShowuserComponent,
+    InactiveComponent,
+    ProfileComponent,
+    ResetpassComponent,
+    UpdateprofileComponent,
     BookDetailsComponent,
     BookDialogComponent,
     BookUpdateDialogComponent,

@@ -1,11 +1,14 @@
 export class User{
     id_user:Number;
     password:String;
-    type:string;
+    sexe:String;
+    phone:String;
     mail:String;
     firstname:String;
     lastname:String;
    priority:Number;
-    specialty:Number;
+    specialty:String;
+    type:String;
+    state:String;
     image:String;
 }

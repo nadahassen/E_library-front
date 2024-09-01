@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'app/models/user.model';
+import { UserService } from 'app/services/user.service';
 import * as Chartist from 'chartist';
 
 @Component({
@@ -8,8 +10,8 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  users:User[];
+  constructor(private router:Router,private userService:UserService) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -66,10 +68,41 @@ export class DashboardComponent implements OnInit {
 
       seq2 = 0;
   };
+  accpetUser(id:Number){
+    this.userService.acceptUser(id).subscribe(
+      (res)=>{
+        this.fetchItems();
+      }
+    )
+  }
+  declineUser(id:Number){
+    this.userService.getUserById(id).subscribe(
+      (res)=>{
+        let u=res;
+        u.state="DECLINED";
+        this.userService.updateUser(u).subscribe(
+          (r)=>{
+
+            this.fetchItems();
+          }
+        )
+      }
+    )
+  }
+  fetchItems(){
+    this.userService.getAllUsers().subscribe(
+      (res)=>{
+        this.users=res;
+        this.users=this.users.filter(user => user.state === 'PENDING')
+      }
+    )
+  }
   ngOnInit() {
+      this.fetchItems();
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
       const role=localStorage.getItem('role');
-      if (role==="STUDENT"){
+
+      if (role==="STUDENT" || !role ){
         this.router.navigate(['/notfound'])
       }
       const dataDailySalesChart: any = {

@@ -17,9 +17,12 @@
       </mat-error>
   
   </mat-form-field>
-  
-  <mat-checkbox [(ngModel)]="oneWeekChecked">1 Week</mat-checkbox>
-  <mat-checkbox [(ngModel)]="twoWeeksChecked">2 Weeks</mat-checkbox>
+  <mat-radio-group aria-label="Select an option" [(ngModel)]="duration">
+    <mat-radio-button value="1">1 Week</mat-radio-button>
+    <mat-radio-button value="2">2 Weeks</mat-radio-button>
+  </mat-radio-group>
+  <!-- <mat-checkbox [(ngModel)]="oneWeekChecked">1 Week</mat-checkbox>
+  <mat-checkbox [(ngModel)]="twoWeeksChecked">2 Weeks</mat-checkbox> -->
 </mat-dialog-content>
 
 <mat-dialog-actions>

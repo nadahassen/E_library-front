@@ -73,5 +73,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'reservation',        component: ReservationComponent },
     { path: 'user',        component: UserComponent },
     { path: 'subject',        component: SubjectComponent },
-    {path: 'test' ,  component:BookReservationComponent}
+    {path: 'books' ,  component:BookReservationComponent}
 ];

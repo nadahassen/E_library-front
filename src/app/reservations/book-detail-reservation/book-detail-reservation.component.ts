@@ -5,6 +5,7 @@ import { Book } from 'app/models/book';
 import { Reservation } from 'app/models/reservation';
 import { BookService } from 'app/services/book.service';
 import { ReservationService } from 'app/services/reservation.service';
+import { UserService } from 'app/services/user.service';
 
 @Component({
   selector: 'app-book-detail-reservation',
@@ -15,9 +16,10 @@ export class BookDetailReservationComponent implements OnInit{
   reservationDate: Date | null = null;
   minDate: Date;
   reserveForm: FormGroup;
-
+  user_id:any;
   oneWeekChecked = false;
   twoWeeksChecked = false;
+  duration=null
   book: Book;
   searchCriteria: any;
   constructor(
@@ -25,6 +27,7 @@ export class BookDetailReservationComponent implements OnInit{
     public dialogRef: MatDialogRef<BookDetailReservationComponent>,
     private fb: FormBuilder,
     private reservationService : ReservationService,
+    private userService : UserService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.book = data.book;
@@ -32,6 +35,15 @@ export class BookDetailReservationComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.userService.getLoggedUser().subscribe({
+      next: (user) => {
+        this.user_id = user.id_user; 
+      
+      },
+      error: (err) => {
+        console.error("Error fetching user:", err);
+      }
+    });
     this.minDate = new Date();
 
     if (this.searchCriteria.availabilityDate)
@@ -57,7 +69,7 @@ export class BookDetailReservationComponent implements OnInit{
       return;
     }
 
-    const reservationDuration = this.oneWeekChecked ? 7 : this.twoWeeksChecked ? 14 : null;
+    const reservationDuration = this.duration ==1  ? 7 :14;
 
     if (!reservationDuration) {
       alert('Please select a reservation duration.');
@@ -69,7 +81,7 @@ const reservation = {
       "return_date": this.getFormatDate(this.addDays(this.reservationDate,reservationDuration)),
       "status": 2,
       "user":{
-          "id_user" : 1
+          "id_user" : this.user_id
       },
       "book":{
           "id_book" :this.book.id_book

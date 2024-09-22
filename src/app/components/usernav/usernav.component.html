@@ -8,11 +8,11 @@
 </head>
   <!-- Logo Section -->
     <img src="/assets/img/Logo_ESPRIT_Ariana-removebg-preview.png" alt="ESPRIT Logo" class="logo"/>
-    <img  *ngIf="u.image" [src]="getAdminPhotoUrl(u)" class="i" alt="Profil Image">
-<li><button (click)="logout()" class="b" title="logout"><mat-icon>exit_to_app</mat-icon></button></li>
+    <!-- <img  *ngIf="u.image" [src]="getAdminPhotoUrl(u)" class="i" alt="Profil Image"> -->
   <!-- Menu Icon -->
   <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" />
   <label for="menu-icon"></label>
+
 
   <!-- Navigation Menu -->
   <nav class="nav">
@@ -21,6 +21,13 @@
       <li><a (click)="navigate('ressource')">Resources</a></li>
       <li><a (click)="navigate('books')">PFE Books</a></li>
       <li><a (click)="navigate('profile')">Profile</a></li>
+      <li><a (click)="logout()">Logout <mat-icon >exit_to_app</mat-icon></a></li>
+
+
     </ul>
   </nav>
+
+   
+
+
 </html>

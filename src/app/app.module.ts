@@ -47,6 +47,8 @@ import { BookReservationComponent } from './reservations/book-reservation/book-r
 import { BookDetailReservationComponent } from './reservations/book-detail-reservation/book-detail-reservation.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AddResourceComponent } from './ressources/addresource/addresource.component';
+import {MatRadioModule} from '@angular/material/radio';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -70,7 +72,8 @@ import { AddResourceComponent } from './ressources/addresource/addresource.compo
     MatProgressSpinnerModule,
     MatCardModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule
   ],
   declarations: [
     AppComponent,
